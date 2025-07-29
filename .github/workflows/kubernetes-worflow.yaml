@@ -1,4 +1,4 @@
-name: Solar System Workflow
+name: Foaad Solar System 
 
 
 on:
@@ -23,11 +23,15 @@ jobs:
     name: docker build
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
     - name: Docker Hub Login
-      uses: docker/login-action@v2.2.0
+      uses: docker/login-action@v3
       with:
       username: ${{ vars.DOCKERHUB_USERNAME }}
       password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      
     - name: Build Docker Image for Testing
       uses: docker/build-push-action@v4
       with:
